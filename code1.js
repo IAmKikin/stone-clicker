@@ -6,12 +6,11 @@ let requiredXP = 500;
 let shopPrice = [(shop0 = 50), (shop1 = 25), (shop2 = 1000)];
 let itemCounter = [(item0 = 0), (item1 = 0), (item2 = 0)];
 
-
-function sleep(ms){
+function sleep(ms) {
   //Sleep translated for Javascript
-  return new Promise( resolver => setTimeout(resolver, ms));
- };
- 
+  return new Promise((resolver) => setTimeout(resolver, ms));
+}
+
 function click() {
   //The good and ol' click
   xp = xp + (baseClickValue + itemCounter[1]) * (itemCounter[0] + 1);
@@ -38,17 +37,54 @@ function clicker() {
   }
 }
 
-let unlockedYet = ([UY1 = false,UY2 = false,UY3 = false])
-//List and unlock function
+function save() {
+  //When clicked, it saves.
+  localStorage.setItem("XP", xp);
+  localStorage.setItem("Level", level);
+  localStorage.setItem("Item price", JSON.stringify(shopPrice)); //Makes arrays into a sting
+  localStorage.setItem("Upgrade count", JSON.stringify(itemCounter)); //Makes arrays into a sting
+  localStorage.setItem("Requiered xp to level", requiredXP);
+}
+
+function load() {
+  //It loads the data.
+
+  //XP Load
+  xp = localStorage.getItem("XP");
+  xp = parseInt(xp);
+  showXP();
+
+  //Level load
+  level = localStorage.getItem("Level");
+  level = parseInt(level);
+  verifyLevel();
+  document.getElementById("levelNow").innerHTML = "Level: " + level;
+
+  //Item price load
+  shopPrice = JSON.parse(localStorage.getItem("Item price"));
+
+  //Upgrade count
+  itemCounter = JSON.parse(localStorage.getItem("Upgrade count"));
+
+  //Required XP count
+  requiredXP = localStorage.getItem("Requiered xp to level");
+  document.getElementById("reqLevel").innerHTML =
+    "XP for next level: " + requiredXP;
+}
+
+//List of every unlocked item.
+let unlockedYet = [(UY1 = false), (UY2 = false), (UY3 = false)];
+
 function unlock(itemToUnlock, oldId, newId) {
-  if(itemToUnlock == 2, UY1 == false){
-  document.getElementById(oldId).style = "display:block;";
-  document.getElementById(oldId).style.backgroundColor = "#0dd116";
-  document.getElementById(oldId).className = newId;
-  document.getElementById(oldId).id = newId;
-  console.log('Unlocked Item 2')
-  UY1 = true;
- }
+  //It unlocks the item when requirements are completed.
+  if ((itemToUnlock == 2, UY1 == false)) {
+    document.getElementById(oldId).style = "display:block;";
+    document.getElementById(oldId).style.backgroundColor = "#0dd116";
+    document.getElementById(oldId).className = newId;
+    document.getElementById(oldId).id = newId;
+    console.log("Unlocked Item 2");
+    UY1 = true;
+  }
 }
 
 function shopItem0() {
@@ -96,11 +132,11 @@ function shopItem2() {
 }
 async function fnctItem2(ms) {
   for (let i = 0; i < 1; i++) {
-    await sleep(ms)
+    await sleep(ms);
     xp = xp + 5;
     showXP();
   }
-  fnctItem2(1000)
+  fnctItem2(1000);
 }
 
 function verifyLevel() {
@@ -110,7 +146,7 @@ function verifyLevel() {
   };
   if (level <= 9) {
     changeBackground("url('images/Caverns.png')");
-    unlock(2,"toUnlock", "justUnlocked");
+    unlock(2, "toUnlock", "justUnlocked");
   } else if ((level <= 19, level >= 10)) {
     changeBackground("url('images/Backgroun2.png')");
   }

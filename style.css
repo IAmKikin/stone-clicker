@@ -93,3 +93,11 @@ button:active{
     background-color: aqua;
 
 }
+.autosave-message{
+    text-align: center;
+    color: greenyellow;
+
+}
+.autosave-message--saving{
+    color: wheat;
+}
