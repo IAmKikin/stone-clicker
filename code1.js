@@ -74,7 +74,6 @@ function shopItem1() {
       "Not enough XP!, you need " + shopPrice[1] + " XP to upgrade";
   }
 }
-
 function shopItem2() {
   document.getElementById("justUnlocked").style.backgroundColor = "white";
   if (xp >= shopPrice[2]) {
@@ -120,4 +119,3 @@ function rebirth() {
       "You must be level 100 to rebirth!";
   }
 }
-

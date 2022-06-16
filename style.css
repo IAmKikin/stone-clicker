@@ -45,7 +45,7 @@
     width: 280px;
 }
 .pickaxe:active{
-    transform:translateY(4px)
+    transform: rotate(30deg);
 }
 p{
     text-align: center;
