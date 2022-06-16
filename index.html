@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="code1.js"> </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone Clicker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.ico">
+</head>
+<body>
+    <div class="main" id="main2">
+        <p class="title">Stone Clicker</p>
+        <input type="image" class="pickaxe" id="pickaxe" onclick="clicker()" src="images/pickaxe.png">
+        <div class="info">
+            <p id="xpNow" class="infot">Total XP: 0</p>
+            <p id="levelNow" class="infot">Level: 1</p>
+            <p id="reqLevel" class="infot">XP for next level: 500</p>
+        </div>
+     <br>
+        <div class="shopItems">
+            <p class="shop">Shop</p> 
+            <button onclick="shopItem0()" id="item1">Sharpness x1</button> <p id="shop0"></p> 
+            <button onclick="shopItem1()" id="item2">Extra Click x1</button>  <p id="shop1"></p>
+            <br>
+            <button onclick="shopItem2()" id="toUnlock" class="toUnlock">Auto clicker x1 </button> <p id="shop2"></p>
+        </div>
+        <div class="rebirth">
+        <p class="rebirthP" id="rebirthP"></p>
+        <button class="rebirthButton" onclick="rebirth()">Rebirth</button>
+     </div>
+    </div>
+   </div>
+   
+</body>
+</html>

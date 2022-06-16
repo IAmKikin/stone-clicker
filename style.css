@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+.main{
+    width:100%;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    background-image:url("images/Background.png");
+}
+.title{
+    font-size: 100px;
+    margin-bottom: 30px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-style: bold;
+}
+.info{
+    display: block;
+    background-color:white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+    color: black;
+    outline: 2px;
+    outline-style:groove;
+    font-size: 20px;
+}
+.infot{
+    color: black;
+    -webkit-text-stroke: 0.1px;
+}
+.pickaxe{
+   width: 250px;
+   height: auto;
+   display: block;
+   transition: all 100ms ease-in-out;
+   margin-left: auto;
+   margin-right: auto;
+}
+.pickaxe:hover{
+    width: 280px;
+}
+.pickaxe:active{
+    transform:translateY(4px)
+}
+p{
+    text-align: center;
+    font-family: serif;
+    color: white;
+    font: bold;
+}
+button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    transition: all 100ms ease-in-out;
+    height:30px;
+    font-size: 20px;
+    
+}
+button:hover{
+    width: 260px;
+    background-color: azure;
+}
+button:active{
+    transform:translateY(2px)
+}
+.shop{
+    font-size: 40px;
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: black;
+}
+.toUnlock{
+    background-color: aqua;
+    display: none;
+  
+}
+.rebirth{
+    margin-left: 20px;
+    position: absolute;
+    bottom: 0;
+}
+.rebirthP{
+    bottom: 100;
+    font-size: 20px;
+}
+.rebirthButton{
+    background-color: aqua;
+
+}
