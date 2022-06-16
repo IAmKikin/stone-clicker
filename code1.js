@@ -95,7 +95,7 @@ async function fnctItem2(ms) {
     xp = xp + 5;
     showXP();
   }
-  fnctItem2(500)
+  fnctItem2(1000)
 }
 
 
