@@ -3,19 +3,22 @@ let level = 1;
 let xp = 0;
 const baseClickValue = 1;
 let requiredXP = 500;
-let unlocked = false;
 let shopPrice = [(shop0 = 50), (shop1 = 25), (shop2 = 1000)];
 let itemCounter = [(item0 = 0), (item1 = 0), (item2 = 0)];
 
+
 function sleep(ms){
+  //Sleep translated for Javascript
   return new Promise( resolver => setTimeout(resolver, ms));
  };
-
+ 
 function click() {
+  //The good and ol' click
   xp = xp + (baseClickValue + itemCounter[1]) * (itemCounter[0] + 1);
 }
 
 function showXP() {
+  //Useful to show xp
   return (document.getElementById("xpNow").innerHTML = "Total XP: " + xp);
 }
 
@@ -34,21 +37,22 @@ function clicker() {
     verifyLevel();
   }
 }
-let item1modified = false;
+
+let unlockedYet = ([UY1 = false,UY2 = false,UY3 = false])
+//List and unlock function
 function unlock(itemToUnlock, oldId, newId) {
-  if(itemToUnlock == 2, item1modified == false){
+  if(itemToUnlock == 2, UY1 == false){
   document.getElementById(oldId).style = "display:block;";
   document.getElementById(oldId).style.backgroundColor = "#0dd116";
   document.getElementById(oldId).className = newId;
   document.getElementById(oldId).id = newId;
   console.log('Unlocked Item 2')
-  item1modified = true;
+  UY1 = true;
  }
 }
 
-
 function shopItem0() {
-  //This is the first item shop; the multiplier
+  //This is the first item shop
   if (xp >= shopPrice[0]) {
     xp = xp - shopPrice[0];
     itemCounter[0] = itemCounter[0] + 1;
@@ -74,7 +78,9 @@ function shopItem1() {
       "Not enough XP!, you need " + shopPrice[1] + " XP to upgrade";
   }
 }
+
 function shopItem2() {
+  //Third item shop. This one requieres to be unlocked first in order to be used.
   document.getElementById("justUnlocked").style.backgroundColor = "white";
   if (xp >= shopPrice[2]) {
     itemCounter[2] = itemCounter[2] + 1;
@@ -88,7 +94,6 @@ function shopItem2() {
       "Not enough XP!, you need " + shopPrice[2] + " XP to upgrade";
   }
 }
-
 async function fnctItem2(ms) {
   for (let i = 0; i < 1; i++) {
     await sleep(ms)
@@ -98,8 +103,8 @@ async function fnctItem2(ms) {
   fnctItem2(1000)
 }
 
-
 function verifyLevel() {
+  //Will verify if a change is needed based on level
   let changeBackground = (backgroundURL) => {
     document.getElementById("main2").style.backgroundImage = backgroundURL;
   };
@@ -112,6 +117,7 @@ function verifyLevel() {
 }
 
 function rebirth() {
+  //Remove all progression to start over with rewards
   if (level >= 100) {
     console.log("wow, so you have finally achieved");
   } else {

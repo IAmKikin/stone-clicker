@@ -68,7 +68,7 @@ button:hover{
     background-color: azure;
 }
 button:active{
-    transform: rotate(30deg);
+    background-color: rgb(187, 185, 185);
 }
 .shop{
     font-size: 40px;
