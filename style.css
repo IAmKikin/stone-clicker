@@ -68,7 +68,7 @@ button:hover{
     background-color: azure;
 }
 button:active{
-    transform:translateY(2px)
+    transform: rotate(30deg);
 }
 .shop{
     font-size: 40px;
