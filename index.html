@@ -12,7 +12,11 @@
 <body>
     <div class="main" id="main2">
         <p class="title">Stone Clicker</p>
-        <input type="image" class="pickaxe" id="pickaxe" onclick="clicker()" src="images/pickaxe.png">
+        <div class="pico" onclick="clicker()" >
+            <input type="image" src="./images/pickaxe.png" alt="">
+            <input type="image" id="picohead" class="filters" src="./images/pickaxep3.svg" alt="">
+            <input type="image" src="./images/pickaxep2.png" alt="">
+         </div>
         <div class="info">
             <p id="xpNow" class="infot">Total XP: 0</p>
             <p id="levelNow" class="infot">Level: 1</p>
@@ -23,7 +27,6 @@
             <p class="shop">Shop</p> 
             <button onclick="shopItem0()" id="item1">Sharpness x1</button> <p id="shop0"></p> 
             <button onclick="shopItem1()" id="item2">Extra Click x1</button>  <p id="shop1"></p>
-            <br>
             <button onclick="shopItem2()" id="toUnlock" class="toUnlock">Auto clicker x1 </button> <p id="shop2"></p>
         </div>
         <div class="rebirth">

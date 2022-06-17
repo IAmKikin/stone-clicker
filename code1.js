@@ -36,7 +36,7 @@ function clicker() {
     verifyLevel();
   }
 }
-
+//Save and load ----------------------------------------------------------------------------------------
 function save() {
   //When clicked, it saves.
   localStorage.setItem("XP", xp);
@@ -71,10 +71,9 @@ function load() {
   document.getElementById("reqLevel").innerHTML =
     "XP for next level: " + requiredXP;
 }
-
+//Useful functions ----------------------------------------------------------------------------------------------
 //List of every unlocked item.
 let unlockedYet = [(UY1 = false), (UY2 = false), (UY3 = false)];
-
 function unlock(itemToUnlock, oldId, newId) {
   //It unlocks the item when requirements are completed.
   if ((itemToUnlock == 2, UY1 == false)) {
@@ -87,14 +86,55 @@ function unlock(itemToUnlock, oldId, newId) {
   }
 }
 
+const pickaxeColors = [
+  (wood =
+    "invert(0%) sepia(100%) saturate(947%) hue-rotate(350deg) brightness(50%) contrast(90%)"),
+  (stone =
+    "invert(0%) sepia(0%) saturate(0%) hue-rotate(155deg) brightness(108%) contrast(98%)"),
+  (iron =
+    "invert(0%) sepia(100%) saturate(31%) brightness(150%) contrast(100%) hue-rotate(3000deg)"),
+  (gold =
+    "invert(0%) sepia(100%) saturate(4200%) hue-rotate(348deg) brightness(280%) contrast(160%)"),
+  (diamond =
+    "invert(0%) sepia(100%) saturate(3140%) brightness(200%) contrast(100%) hue-rotate(890deg"),
+];
+
+function changeColor() {
+  if (itemCounter[0] == 1) {
+    document.getElementById("picohead").style.filter = pickaxeColors[1];
+    console.log("tr");
+  } else if (itemCounter[0] == 2) {
+    document.getElementById("picohead").style.filter = pickaxeColors[2];
+  } else if (itemCounter[0] == 3) {
+    document.getElementById("picohead").style.filter = pickaxeColors[3];
+  } else if (itemCounter[0] == 4) {
+    document.getElementById("picohead").style.filter = pickaxeColors[4];
+  }
+}
+
+function verifyLevel() {
+  //Will verify if a change is needed based on level
+  let changeBackground = (backgroundURL) => {
+    document.getElementById("main2").style.backgroundImage = backgroundURL;
+  };
+  if ((level <= 9, level >= 2)) {
+    changeBackground("url('images/Caverns.png')");
+    unlock(2, "toUnlock", "justUnlocked");
+  } else if ((level <= 19, level >= 10)) {
+    changeBackground("url('images/Backgroun2.png')");
+  }
+}
+
+//Shop ----------------------------------------------------------------------------------------------
 function shopItem0() {
-  //This is the first item shop
+  //This is the first item shop: sharpness
   if (xp >= shopPrice[0]) {
     xp = xp - shopPrice[0];
     itemCounter[0] = itemCounter[0] + 1;
-    shopPrice[0] = (shopPrice[0] + 250) * (itemCounter[0] + 1);
+    // shopPrice[0] = (shopPrice[0] + 250) * (itemCounter[0] + 1);
     document.getElementById("shop0").innerHTML = "You bought a multiplier";
     showXP();
+    changeColor();
   } else {
     document.getElementById("shop0").innerHTML =
       "Not enough XP!, you need " + shopPrice[0] + " XP to upgrade";
@@ -139,19 +179,7 @@ async function fnctItem2(ms) {
   fnctItem2(1000);
 }
 
-function verifyLevel() {
-  //Will verify if a change is needed based on level
-  let changeBackground = (backgroundURL) => {
-    document.getElementById("main2").style.backgroundImage = backgroundURL;
-  };
-  if ((level <= 9, level >= 2)) {
-    changeBackground("url('images/Caverns.png')");
-    unlock(2, "toUnlock", "justUnlocked");
-  } else if ((level <= 19, level >= 10)) {
-    changeBackground("url('images/Backgroun2.png')");
-  }
-}
-
+//More options ----------------------------------------------------------------------------------------------
 function rebirth() {
   //Remove all progression to start over with rewards
   if (level >= 100) {

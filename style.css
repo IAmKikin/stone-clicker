@@ -101,3 +101,45 @@ button:active{
 .autosave-message--saving{
     color: wheat;
 }
+
+.pico{
+    display: flex;
+    width: 20em;
+    height: auto;
+    transition: all 50ms ease-in-out;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.pico input{
+    width: 100%;
+}
+
+.pico input:nth-child(2){
+    width: 80%;
+    position: relative;
+    right: 21.7em;
+    bottom: 7.1em;
+    filter:  invert(0%) sepia(100%) saturate(947%) hue-rotate(350deg) brightness(50%) contrast(90%);
+}
+.pico input:nth-child(3){
+    width: 20%;
+    height: 20%;
+    position: relative;
+    right: 33.6em;
+    top: 1.2em;
+}
+.picohead{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    transition: all 100ms ease-in-out;
+    filter:  invert(0%) sepia(100%) saturate(947%) hue-rotate(350deg) brightness(50%) contrast(90%);
+    
+
+}
+
+.pico:active{
+    transform: rotate(10deg);
+}
