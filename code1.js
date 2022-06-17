@@ -144,7 +144,7 @@ function verifyLevel() {
   let changeBackground = (backgroundURL) => {
     document.getElementById("main2").style.backgroundImage = backgroundURL;
   };
-  if (level <= 9) {
+  if ((level <= 9, level >= 2)) {
     changeBackground("url('images/Caverns.png')");
     unlock(2, "toUnlock", "justUnlocked");
   } else if ((level <= 19, level >= 10)) {
