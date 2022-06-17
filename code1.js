@@ -135,7 +135,7 @@ function refreshUIShop() {
     "Extra Click x1 (" + shopPrice[1] + " XP)";
   if (level >= 2) {
     document.getElementById("item3").innerHTML =
-      "Extra Click x1 (" + shopPrice[2] + " XP)";
+      "Autoclick x1 (" + shopPrice[2] + " XP)";
   }
 }
 function shopItem0() {
@@ -224,10 +224,21 @@ window.onclick = function (event) {
   }
 };
 
+// function reset() {
+//   (xp = 0),
+//     (level = 0),
+//     (requiredXP = 500),
+//     (itemCounter[(0, 1, 2, 3)] = 0),
+//     (shopPrice[(0, 1, 2, 3)] = 0);
+//     showXP()
+//     changeColor();
+// }
+
 async function start(ms) {
   await sleep(ms);
   showXP();
   verifyLevel();
   refreshUIShop();
+  // load();
 }
 start(10);
