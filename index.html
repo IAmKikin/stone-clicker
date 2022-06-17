@@ -10,22 +10,30 @@
     <link rel="icon" href="images/icon.ico">
 </head>
 <body>
+    
     <div class="main" id="main2">
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Menu</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#" class="save" onclick="save()">Save</a>
+              <a href="#" class="load" onclick="load()">Load</a>
+            </div>
+          </div>
         <p class="title">Stone Clicker</p>
-        <div class="pico" onclick="clicker()" >
+        <div class="pico" onclick="clicker()" > <!--Pickaxe -->
             <input type="image" src="./images/pickaxe.png" alt="">
             <input type="image" id="picohead" class="filters" src="./images/pickaxep3.svg" alt="">
             <input type="image" src="./images/pickaxep2.png" alt="">
          </div>
-        <div class="info">
+        <div class="info"> <!--Info table -->
             <p id="xpNow" class="infot">Total XP: 0</p>
             <p id="levelNow" class="infot">Level: 1</p>
             <p id="reqLevel" class="infot">XP for next level: 500</p>
         </div>
      <br>
-        <div class="shopItems">
+         <div class="shopItems"> <!--Shop itself -->
             <p class="shop">Shop</p> 
-            <button onclick="shopItem0()" id="item1">Sharpness x1</button> <p id="shop0"></p> 
+            <button onclick="shopItem0()" id="item1">Upgrade Pickaxe</button> <p id="shop0"></p> 
             <button onclick="shopItem1()" id="item2">Extra Click x1</button>  <p id="shop1"></p>
             <button onclick="shopItem2()" id="toUnlock" class="toUnlock">Auto clicker x1 </button> <p id="shop2"></p>
         </div>
@@ -35,8 +43,7 @@
         </div>
         <div>
             <br>
-            <button class="save" href="#" onclick="save()">Save</button>
-            <button class="load" href="#" onclick="load()">Load</button>
+
 
         <!-- </div>
         <div class="autosave-message">

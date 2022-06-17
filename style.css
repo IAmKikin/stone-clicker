@@ -2,54 +2,57 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 .main{
     width:100%;
     height: 100vh;
     position: fixed;
     overflow: hidden;
-    background-image:url("images/Background.png");
+    background-image:url("https://art.ngfiles.com/images/363000/363156_cutesbboy_beacon-cave-background.png?f1434781784");
+    background-repeat: no-repeat;
+    background-attachment:scroll;
+    background-color: black;
 }
+@font-face {
+    font-family: myFirstFont;
+    src: url(BebasNeue-Regular.ttf);
+  }
+  @font-face {
+    font-family: mySecondFont;
+    src: url(Rene\ Bieder\ -\ Gentona\ ExtraBold\ DEMO.otf);
+  }
 .title{
     font-size: 100px;
+    font-family: mySecondFont;
     margin-bottom: 30px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
-    font-style: bold;
 }
 .info{
     display: block;
     background-color:white;
     margin-left: auto;
     margin-right: auto;
-    width: 10%;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    width: 15%;
     color: black;
     outline: 2px;
     outline-style:groove;
-    font-size: 20px;
+    font-size: 18px;
+    border-radius: 10px;
 }
 .infot{
     color: black;
-    -webkit-text-stroke: 0.1px;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+    -webkit-text-stroke: 0px;
 }
-.pickaxe{
-   width: 250px;
-   height: auto;
-   display: block;
-   transition: all 100ms ease-in-out;
-   margin-left: auto;
-   margin-right: auto;
-}
-.pickaxe:hover{
-    width: 280px;
-}
-.pickaxe:active{
-    transform: rotate(30deg);
-}
+
 p{
     text-align: center;
-    font-family: serif;
     color: white;
     font: bold;
 }
@@ -57,14 +60,16 @@ button{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 250px;
+    width: 280px;
     transition: all 100ms ease-in-out;
     height:30px;
-    font-size: 20px;
+    border-radius: 10px;
+    font-size: 19px;
+    
     
 }
 button:hover{
-    width: 260px;
+    width: 286px;
     background-color: azure;
 }
 button:active{
@@ -72,6 +77,8 @@ button:active{
 }
 .shop{
     font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
     -webkit-text-stroke-width: 0.25px;
     -webkit-text-stroke-color: black;
 }
@@ -81,17 +88,24 @@ button:active{
   
 }
 .rebirth{
-    margin-left: 20px;
+    margin-left: 10px;
     position: absolute;
     bottom: 0;
+    
 }
 .rebirthP{
     bottom: 100;
-    font-size: 20px;
+    font-size: 17px;
+    text-align: left;
 }
 .rebirthButton{
     background-color: aqua;
+    width: 150px;
+    align-content: left;
 
+}
+.rebirthButton:hover{
+    width: 260px;
 }
 .autosave-message{
     text-align: center;
@@ -136,10 +150,67 @@ button:active{
     justify-content: center;
     transition: all 100ms ease-in-out;
     filter:  invert(0%) sepia(100%) saturate(947%) hue-rotate(350deg) brightness(50%) contrast(90%);
-    
-
 }
 
 .pico:active{
     transform: rotate(10deg);
 }
+.pico:hover{
+    width: 321px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #ffffff;
+    color: black;
+    font-family: sans-serif;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 10px;
+
+  }
+  
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: wheat;
+    width: 150px;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: absolute;
+    
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 145px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}

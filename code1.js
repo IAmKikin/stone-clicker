@@ -21,29 +21,33 @@ function showXP() {
   return (document.getElementById("xpNow").innerHTML = "Total XP: " + xp);
 }
 
-function clicker() {
-  // When you click, you get a value. This functions verifies the lvl as well
-  click();
-  showXP();
+function verifyXP() {
+  //It verifies the Xp so you level up when needed.
   if (xp >= requiredXP) {
     console.log("You level up! You are level " + level + " now");
     level = level + 1;
-    requiredXP = requiredXP + 200;
+    requiredXP = (requiredXP * 3) / 1.2;
+    requiredXP = Math.round(requiredXP);
     document.getElementById("levelNow").innerHTML = "Level: " + level;
     document.getElementById("reqLevel").innerHTML =
       "XP for next level: " + requiredXP;
-    clicker();
+    verifyXP();
     verifyLevel();
   }
+}
+
+function clicker() {
+  // When you click, you get a value.
+  click();
+  showXP();
+  verifyXP();
 }
 //Save and load ----------------------------------------------------------------------------------------
 function save() {
   //When clicked, it saves.
   localStorage.setItem("XP", xp);
-  localStorage.setItem("Level", level);
   localStorage.setItem("Item price", JSON.stringify(shopPrice)); //Makes arrays into a sting
   localStorage.setItem("Upgrade count", JSON.stringify(itemCounter)); //Makes arrays into a sting
-  localStorage.setItem("Requiered xp to level", requiredXP);
 }
 
 function load() {
@@ -52,13 +56,6 @@ function load() {
   //XP Load
   xp = localStorage.getItem("XP");
   xp = parseInt(xp);
-  showXP();
-
-  //Level load
-  level = localStorage.getItem("Level");
-  level = parseInt(level);
-  verifyLevel();
-  document.getElementById("levelNow").innerHTML = "Level: " + level;
 
   //Item price load
   shopPrice = JSON.parse(localStorage.getItem("Item price"));
@@ -66,10 +63,14 @@ function load() {
   //Upgrade count
   itemCounter = JSON.parse(localStorage.getItem("Upgrade count"));
 
-  //Required XP count
-  requiredXP = localStorage.getItem("Requiered xp to level");
+  verifyXP();
+  refreshUIShop();
+  showXP();
+  verifyLevel();
+  document.getElementById("levelNow").innerHTML = "Level: " + level;
   document.getElementById("reqLevel").innerHTML =
     "XP for next level: " + requiredXP;
+  changeColor();
 }
 //Useful functions ----------------------------------------------------------------------------------------------
 //List of every unlocked item.
@@ -118,24 +119,32 @@ function verifyLevel() {
     document.getElementById("main2").style.backgroundImage = backgroundURL;
   };
   if ((level <= 9, level >= 2)) {
-    changeBackground("url('images/Caverns.png')");
+    // changeBackground("url('images/Caverns.png')");
     unlock(2, "toUnlock", "justUnlocked");
   } else if ((level <= 19, level >= 10)) {
-    changeBackground("url('images/Backgroun2.png')");
+    // changeBackground("url('images/Backgroun2.png')");
   }
 }
 
 //Shop ----------------------------------------------------------------------------------------------
+function refreshUIShop() {
+  document.getElementById("item1").innerHTML =
+    "Upgrade Pickaxe (" + shopPrice[0] + " XP)";
+  document.getElementById("item2").innerHTML =
+    "Extra Click x1 (" + shopPrice[1] + " XP)";
+}
 function shopItem0() {
   //This is the first item shop: sharpness
   if (xp >= shopPrice[0]) {
     xp = xp - shopPrice[0];
     itemCounter[0] = itemCounter[0] + 1;
-    // shopPrice[0] = (shopPrice[0] + 250) * (itemCounter[0] + 1);
+    shopPrice[0] = (shopPrice[0] + 250) * (itemCounter[0] + 1);
     document.getElementById("shop0").innerHTML = "You bought a multiplier";
     showXP();
     changeColor();
+    refreshUIShop();
   } else {
+    refreshUIShop();
     document.getElementById("shop0").innerHTML =
       "Not enough XP!, you need " + shopPrice[0] + " XP to upgrade";
   }
@@ -149,6 +158,7 @@ function shopItem1() {
     shopPrice[1] = shopPrice[1] + 10;
     document.getElementById("shop1").innerHTML = "You bought an extra click";
     showXP();
+    refreshUIShop();
   } else {
     document.getElementById("shop1").innerHTML =
       "Not enough XP!, you need " + shopPrice[1] + " XP to upgrade";
@@ -164,6 +174,7 @@ function shopItem2() {
     shopPrice[2] = shopPrice[2] + 1000;
     showXP();
     fnctItem2();
+    refreshUIShop();
     document.getElementById("shop2").innerHTML = "You bought Autoclicker";
   } else {
     document.getElementById("shop2").innerHTML =
@@ -189,3 +200,29 @@ function rebirth() {
       "You must be level 100 to rebirth!";
   }
 }
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function (event) {
+  if (!event.target.matches(".dropbtn")) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.remove("show");
+      }
+    }
+  }
+};
+
+async function start(ms) {
+  await sleep(ms);
+  showXP();
+  verifyLevel();
+  refreshUIShop();
+}
+start(10);
