@@ -33,6 +33,7 @@ function verifyXP() {
       "XP for next level: " + requiredXP;
     verifyXP();
     verifyLevel();
+    refreshUIShop();
   }
 }
 
@@ -80,7 +81,7 @@ function unlock(itemToUnlock, oldId, newId) {
   if ((itemToUnlock == 2, UY1 == false)) {
     document.getElementById(oldId).style = "display:block;";
     document.getElementById(oldId).style.backgroundColor = "#0dd116";
-    document.getElementById(oldId).className = newId;
+    document.getElementById(oldId).className = "Just unlocked";
     document.getElementById(oldId).id = newId;
     console.log("Unlocked Item 2");
     UY1 = true;
@@ -120,7 +121,7 @@ function verifyLevel() {
   };
   if ((level <= 9, level >= 2)) {
     // changeBackground("url('images/Caverns.png')");
-    unlock(2, "toUnlock", "justUnlocked");
+    unlock(2, "toUnlock", "item3");
   } else if ((level <= 19, level >= 10)) {
     // changeBackground("url('images/Backgroun2.png')");
   }
@@ -132,6 +133,10 @@ function refreshUIShop() {
     "Upgrade Pickaxe (" + shopPrice[0] + " XP)";
   document.getElementById("item2").innerHTML =
     "Extra Click x1 (" + shopPrice[1] + " XP)";
+  if (level >= 2) {
+    document.getElementById("item3").innerHTML =
+      "Extra Click x1 (" + shopPrice[2] + " XP)";
+  }
 }
 function shopItem0() {
   //This is the first item shop: sharpness
@@ -167,7 +172,7 @@ function shopItem1() {
 
 function shopItem2() {
   //Third item shop. This one requieres to be unlocked first in order to be used.
-  document.getElementById("justUnlocked").style.backgroundColor = "white";
+  document.getElementById("item3").style.backgroundColor = "white";
   if (xp >= shopPrice[2]) {
     itemCounter[2] = itemCounter[2] + 1;
     xp = xp - shopPrice[2];
@@ -184,7 +189,7 @@ function shopItem2() {
 async function fnctItem2(ms) {
   for (let i = 0; i < 1; i++) {
     await sleep(ms);
-    xp = xp + 5;
+    xp = xp + 75;
     showXP();
   }
   fnctItem2(1000);
